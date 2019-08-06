@@ -1,18 +1,26 @@
 <template>
-  <div id="app">
+  <div id="app" @click.self="closeDropdown">
     <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <HelloWorld msg="Custom Stuff"/>
+    <radio-buttons />
+    <dropdown />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import { mapActions } from 'vuex';
+import HelloWorld from './components/HelloWorld.vue';
+import RadioButtons from './components/RadioButtons.vue';
+import Dropdown from './components/Dropdown.vue';
 
 export default {
   name: 'app',
   components: {
-    HelloWorld
-  }
+    HelloWorld,
+    RadioButtons,
+    Dropdown,
+  },
+  methods: mapActions(['closeDropdown']),
 }
 </script>
 
@@ -24,5 +32,9 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+  min-height: 100vh;
+}
+#app img {
+  width: 100px;
 }
 </style>
