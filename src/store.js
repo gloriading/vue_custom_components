@@ -3,6 +3,33 @@ import Vuex from 'vuex'
 
 Vue.use(Vuex)
 
+const defaultChoices = [
+  {
+   name: 'apples',
+   selected: false,
+  },
+  {
+   name: 'bananas',
+   selected: false,
+  },
+  {
+   name: 'corn dogs',
+   selected: false,
+  },
+  {
+   name: 'dumplings',
+   selected: false,
+  },
+  {
+    name: 'ice cream',
+    selected: false,
+  },
+  {
+    name: 'green tea',
+    selected: false,
+  },
+];
+
 export default new Vuex.Store({
   state: {
     operators: {
@@ -11,24 +38,7 @@ export default new Vuex.Store({
       orIf: 'OR IF',
     },
     selected: 'If',
-    choices: [
-      {
-       name: 'apples',
-       selected: false,
-      },
-      {
-       name: 'bananas',
-       selected: false,
-      },
-      {
-       name: 'corn dogs',
-       selected: false,
-      },
-      {
-       name: 'dumplings',
-       selected: false,
-      },
-    ],
+    choices: defaultChoices,
     isDropdownOpen: false,
     selectedItems: [],
   },
@@ -46,8 +56,8 @@ export default new Vuex.Store({
     setSelectedItems: (state, selectedItems) => state.selectedItems = selectedItems,
   },
   actions: {
-    toggleDropdown({ commit, state }) {
-      commit('setDropdownStatus', !state.isDropdownOpen);
+    openDropdown({ commit, state }) {
+      commit('setDropdownStatus', true);
     },
     updateSelectedStatus({ commit, state, dispatch }, prop) {
       const updatedChoices = state.choices.map(choice => {
@@ -68,5 +78,8 @@ export default new Vuex.Store({
     closeDropdown({ commit }) {
       commit('setDropdownStatus', false);
     },
+    resetChoices({ commit }) {
+      commit('setChoices', defaultChoices);
+    }
   }
 })
