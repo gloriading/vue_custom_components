@@ -3,7 +3,8 @@
     <img alt="Vue logo" src="./assets/logo.png">
     <HelloWorld msg="Custom Stuff"/>
     <radio-buttons />
-    <dropdown />
+    <!-- <dropdown /> -->
+    <single-select />
   </div>
 </template>
 
@@ -12,6 +13,7 @@ import { mapActions } from 'vuex';
 import HelloWorld from './components/HelloWorld.vue';
 import RadioButtons from './components/RadioButtons.vue';
 import Dropdown from './components/Dropdown.vue';
+import SingleSelect from './components/SingleSelect.vue';
 
 export default {
   name: 'app',
@@ -19,6 +21,7 @@ export default {
     HelloWorld,
     RadioButtons,
     Dropdown,
+    SingleSelect,
   },
   methods: mapActions(['closeDropdown']),
 }
